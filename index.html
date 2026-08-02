@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RD90 PRO PIPE CAM | SUBTEK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           VARIABLES DE MARCA (SUBTEK BRANDBOARD)
+           ========================================================================== */
+        :root {
+            --brand-navy: #071738;
+            --brand-purple: #472876;
+            --brand-blue: #4395AD;
+            --brand-mint: #6CEAD2;
+            --text-light: #F0F4F8;
+            --text-dark: #071738;
+            --bg-light: #FFFFFF;
+            --bg-gray: #E8EEF2;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* ==========================================================================
+           ESTILOS GLOBALES & RESET
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            background-color: var(--brand-navy);
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--brand-mint);
+            color: var(--brand-navy);
+            padding: 1rem 2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid var(--brand-mint);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--brand-mint);
+            box-shadow: 0 0 15px rgba(108, 234, 210, 0.5);
+        }
+
+        /* ==========================================================================
+           NAVEGACIÓN
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(7, 23, 56, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(108, 234, 210, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--bg-light);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--brand-mint);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-mint);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        #hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-purple) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        #hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--bg-light);
+            margin-bottom: 1.5rem;
+        }
+
+        #hero h1 span {
+            color: var(--brand-mint);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: var(--bg-gray);
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid var(--brand-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--brand-mint);
+        }
+
+        /* ==========================================================================
+           CARACTERÍSTICAS CLAVE
+           ========================================================================== */
+        #caracteristicas {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--brand-navy);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--brand-mint);
+            border-radius: 2px;
+        }
+
+        .section-title.dark h2 {
+            color: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-gray);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background-color: #fff;
+            box-shadow: 0 15px 30px rgba(7, 23, 56, 0.1);
+            border-bottom: 4px solid var(--brand-purple);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background-color: var(--brand-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--brand-mint);
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--brand-navy);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* ==========================================================================
+           ESPECIFICACIONES TÉCNICAS
+           ========================================================================== */
+        #especificaciones {
+            padding: 6rem 0;
+            background-color: var(--brand-navy);
+            position: relative;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 992px) {
+            .specs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .spec-table-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(67, 149, 173, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .spec-table-container h3 {
+            background-color: var(--brand-purple);
+            color: var(--bg-light);
+            padding: 1.2rem;
+            margin: 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--brand-mint);
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table th, .spec-table td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-table th {
+            width: 40%;
+            color: var(--brand-mint);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .spec-table td {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .spec-table tr:last-child th,
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .spec-table tr:hover {
+            background-color: rgba(67, 149, 173, 0.1);
+        }
+
+        /* ==========================================================================
+           CASOS DE APLICACIÓN
+           ========================================================================== */
+        #aplicaciones {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--bg-gray) 0%, var(--bg-light) 100%);
+            color: var(--text-dark);
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .app-card {
+            background-color: var(--brand-navy);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--brand-blue);
+            transition: var(--transition);
+        }
+
+        .app-card:hover {
+            border-left: 5px solid var(--brand-mint);
+            transform: translateX(10px);
+        }
+
+        .app-card h3 {
+            color: var(--brand-mint);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-card p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            background-color: #040d21;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(108, 234, 210, 0.2);
+        }
+
+        footer .logo {
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           MEDIA QUERIES (RESPONSIVE)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplificación para mobile sin JS externo */
+            }
+            #hero {
+                padding: 120px 0 60px;
+            }
+            .spec-table th, .spec-table td {
+                display: block;
+                width: 100%;
+            }
+            .spec-table th {
+                padding-bottom: 0;
+                color: var(--brand-blue);
+            }
+            .spec-table td {
+                padding-top: 0.5rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <nav>
+                <div class="logo">SUB<span>&bull;</span>TEK</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#especificaciones">Especificaciones</a></li>
+                    <li><a href="#aplicaciones">Aplicaciones</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="badge-container">
+                <span class="badge">Protección IP68</span>
+                <span class="badge">Certificación NASSCO PACP</span>
+                <span class="badge">Tolerancia 90°C</span>
+            </div>
+            <h1>ROBOT CRAWLER <span>RD90 PRO</span></h1>
+            <p>El estándar definitivo para la inspección endoscópica profesional. Diseñado para enfrentar condiciones críticas en infraestructura subterránea con visión 360° motorizada, tracción integral y análisis estructural milimétrico.</p>
+            <a href="#especificaciones" class="btn-primary">Ver Especificaciones Técnicas</a>
+        </div>
+    </section>
+
+    <section id="caracteristicas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ventajas Competitivas</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-circle">4x4</div>
+                    <h3>Tracción AWD Total</h3>
+                    <p>4 motores independientes de alto torque (72 Kg.cm) que garantizan un avance constante a 14 m/min, incluso en tuberías inclinadas, con sedimentos densos o de difícil acceso, gracias a su control diferencial para giros en el sitio.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle">HD</div>
+                    <h3>Visión 360° Motorizada</h3>
+                    <p>Cabezal de cámara con resolución AHD 1080P, gran angular de 170° y sistema PAN+TILT de 180°. Sus 6 potentes luces LED (600 Lumen) garantizan inspecciones estructurales sin un solo punto ciego.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle">90°C</div>
+                    <h3>Resistencia Industrial</h3>
+                    <p>Totalmente sumergible (IP68) y construido en ABS reforzado con Acero Inoxidable AISI 304. Es capaz de operar en entornos hostiles con temperaturas sostenidas de hasta 90°C (194°F) sin degradación de la señal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle">150m</div>
+                    <h3>Alcance de Precisión</h3>
+                    <p>Carrete de grado exterior con 150 metros de cable UTP CAT6 apantallado. Integra un Encoder de alta resolución (600 Pulsos Por Metro) para un registro de distancia infalible durante el mapeo de la red.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="especificaciones">
+        <div class="container">
+            <div class="section-title dark">
+                <h2>Especificaciones Técnicas</h2>
+            </div>
+            
+            <div class="specs-grid">
+                <div class="spec-table-container">
+                    <h3>Módulo ROV: Unidad de Tracción</h3>
+                    <table class="spec-table">
+                        <tbody>
+                            <tr>
+                                <th>Sistema de Tracción</th>
+                                <td>AWD Completa (4 ruedas motrices independientes)</td>
+                            </tr>
+                            <tr>
+                                <th>Torque y RPM</th>
+                                <td>35 RPM / 72 Kg.cm × 4 Motores</td>
+                            </tr>
+                            <tr>
+                                <th>Velocidad Máxima</th>
+                                <td>14 Metros por minuto</td>
+                            </tr>
+                            <tr>
+                                <th>Control de Maniobra</th>
+                                <td>Diferencial (capacidad de giro en su propio eje)</td>
+                            </tr>
+                            <tr>
+                                <th>Temperatura de Operación</th>
+                                <td>20°C a 90°C (68°F a 194°F)</td>
+                            </tr>
+                            <tr>
+                                <th>Material de Construcción</th>
+                                <td>ABS de alta densidad + Acero Inox. AISI 304</td>
+                            </tr>
+                            <tr>
+                                <th>Dimensiones & Peso</th>
+                                <td>100 × 100 × 650 mm / 6.8 Kg (incluyendo llantas)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="spec-table-container">
+                    <h3>Módulo ROV: Cámara de Precisión</h3>
+                    <table class="spec-table">
+                        <tbody>
+                            <tr>
+                                <th>Resolución Óptica</th>
+                                <td>AHD 1080P Full HD (Formato compresión H.265 / AVI)</td>
+                            </tr>
+                            <tr>
+                                <th>Ángulo y Zoom</th>
+                                <td>Gran Angular Horizontal 170° / Zoom Digital x16</td>
+                            </tr>
+                            <tr>
+                                <th>Movimiento PAN / TILT</th>
+                                <td>180° PAN + 180° TILT (Completamente motorizado)</td>
+                            </tr>
+                            <tr>
+                                <th>Iluminación</th>
+                                <td>6 luces LED frontales con potencia total de 600 Lumen</td>
+                            </tr>
+                            <tr>
+                                <th>Protección Ambiental</th>
+                                <td>Clase IP68 (Inmersión total bajo el agua)</td>
+                            </tr>
+                            <tr>
+                                <th>Telemetría Integrada</th>
+                                <td>Inclinómetro de 2 ejes, Sensor de Pendiente, Voltaje y Temperatura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="spec-table-container" style="grid-column: 1 / -1;">
+                    <h3>Centro de Control & Cableado (Consola XPRO + Carrete CX150)</h3>
+                    <table class="spec-table">
+                        <tbody>
+                            <tr>
+                                <th>Interfaz de Control</th>
+                                <td>Consola IP67 con Pantalla OLED Touch de 4.3" integrada y control por Joysticks.</td>
+                            </tr>
+                            <tr>
+                                <th>Compatibilidad de Software</th>
+                                <td>Preparado para generar reportes bajo el estándar internacional IRIS-NASSCO (NS-058).</td>
+                            </tr>
+                            <tr>
+                                <th>Autonomía Energética</th>
+                                <td>Batería de larga duración: 6 horas de operación continua (Alimentación AC 110-220V).</td>
+                            </tr>
+                            <tr>
+                                <th>Especificaciones del Cable</th>
+                                <td>150 Metros / UTP CAT 6 Outdoor Apantallado (Ø 7 mm) con chaqueta de Polietileno (PE).</td>
+                            </tr>
+                            <tr>
+                                <th>Medición de Distancia</th>
+                                <td>Encoder óptico en el carrete de 600 PPM (Pulsos por metro) con display integrado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aplicaciones">
+        <div class="container">
+            <div class="section-title">
+                <h2>Escenarios de Aplicación Extrema</h2>
+            </div>
+            <div class="applications-grid">
+                <div class="app-card">
+                    <h3>Redes Térmicas e Industriales</h3>
+                    <p>Gracias a su tolerancia estructural hasta los 90°C, el RD90 PRO es la herramienta definitiva para evaluar redes de vapor, descargas de aguas termales e infraestructura de la industria pesada donde equipos convencionales sufren derretimiento de componentes.</p>
+                </div>
+                <div class="app-card">
+                    <h3>Alcantarillados con Flujo Activo</h3>
+                    <p>El estándar de protección IP68 aplicado tanto a la cámara como a los motores de tracción permite la inmersión total. No es necesario el bloqueo total del caudal ni realizar bypass costosos; el robot inspecciona eficazmente incluso contra el flujo.</p>
+                </div>
+                <div class="app-card">
+                    <h3>Colectores Obstruidos</h3>
+                    <p>Tuberías con acumulación densa de sedimentos paralizan equipos estándar. El RD90 supera estas barreras usando su sistema de propulsión AWD de 72 Kg.cm de torque, distribuyendo la fuerza entre sus cuatro ruedas para evitar el atascamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">SUB<span>&bull;</span>TEK</div>
+            <p>Diagnóstico y gestión inteligente subterránea</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">&copy; 2026 SUBTEK. Todos los derechos reservados. Especificaciones basadas en el modelo RD90 PRO PIPE CAM.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
